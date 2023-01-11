@@ -102,7 +102,7 @@
                 android:text="Saved directions"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:drawablePadding="4dp"
-                app:drawableStartCompat="@drawable/ic_round_star" />
+                app:drawableStartCompat="@drawable/ic_round_bookmarks" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -141,9 +141,7 @@
         android:id="@+id/recycler_view_topics"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
