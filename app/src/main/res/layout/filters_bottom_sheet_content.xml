@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.FiltersBottomSheet">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Filter results"
+        android:textAppearance="?textAppearanceHeadline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/menu_subject"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Subject"
+        app:layout_constraintEnd_toEndOf="@+id/text_title"
+        app:layout_constraintStart_toStartOf="@+id/text_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_title">
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/text_level"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Choose level"
+        android:textAppearance="?textAppearanceSubtitle1"
+        app:layout_constraintEnd_toEndOf="@+id/menu_subject"
+        app:layout_constraintStart_toStartOf="@+id/menu_subject"
+        app:layout_constraintTop_toBottomOf="@+id/menu_subject" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chips_level"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/text_level"
+        app:layout_constraintStart_toStartOf="@+id/text_level"
+        app:layout_constraintTop_toBottomOf="@+id/text_level">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_level_middle"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Middle" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_level_undergraduate"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Undergraduate" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_level_magistracy"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Magistracy" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_level_graduate"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Graduate school" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_field_money"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Tuition fee"
+        app:layout_constraintEnd_toEndOf="@+id/chips_level"
+        app:layout_constraintStart_toStartOf="@+id/chips_level"
+        app:layout_constraintTop_toBottomOf="@+id/chips_level">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/text_format"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Choose format"
+        android:textAppearance="?textAppearanceSubtitle1"
+        app:layout_constraintEnd_toEndOf="@+id/text_field_money"
+        app:layout_constraintStart_toStartOf="@+id/text_field_money"
+        app:layout_constraintTop_toBottomOf="@+id/text_field_money" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chips_format"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/text_format"
+        app:layout_constraintStart_toStartOf="@+id/text_format"
+        app:layout_constraintTop_toBottomOf="@+id/text_format">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_format_full"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full-time" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_format_part"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Part-time" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_format_evening"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Evening" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_format_remote"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remote" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_format_accelerated"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accelerated" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_field_score"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Passing score"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/chips_format"
+        app:layout_constraintStart_toStartOf="@+id/chips_format"
+        app:layout_constraintTop_toBottomOf="@+id/chips_format">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

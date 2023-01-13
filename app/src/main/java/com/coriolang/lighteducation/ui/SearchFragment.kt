@@ -33,6 +33,13 @@ class SearchFragment : Fragment() {
                         true
                     }
                     R.id.action_filter -> {
+                        val filtersBottomSheet = FiltersBottomSheet()
+
+                        filtersBottomSheet.show(
+                            parentFragmentManager,
+                            FiltersBottomSheet.TAG
+                        )
+
                         true
                     }
                     else -> false
