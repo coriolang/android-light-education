@@ -38,7 +38,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/text_level"
+        android:id="@+id/text_choose_level"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -53,9 +53,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/text_level"
-        app:layout_constraintStart_toStartOf="@+id/text_level"
-        app:layout_constraintTop_toBottomOf="@+id/text_level">
+        app:layout_constraintEnd_toEndOf="@+id/text_choose_level"
+        app:layout_constraintStart_toStartOf="@+id/text_choose_level"
+        app:layout_constraintTop_toBottomOf="@+id/text_choose_level">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_level_middle"
@@ -106,7 +106,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/text_format"
+        android:id="@+id/text_choose_format"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -121,9 +121,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/text_format"
-        app:layout_constraintStart_toStartOf="@+id/text_format"
-        app:layout_constraintTop_toBottomOf="@+id/text_format">
+        app:layout_constraintEnd_toEndOf="@+id/text_choose_format"
+        app:layout_constraintStart_toStartOf="@+id/text_choose_format"
+        app:layout_constraintTop_toBottomOf="@+id/text_choose_format">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_format_full"

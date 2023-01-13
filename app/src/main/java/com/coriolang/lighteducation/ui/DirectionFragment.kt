@@ -2,13 +2,13 @@ package com.coriolang.lighteducation.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.fragment.app.Fragment
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import com.coriolang.lighteducation.R
 
-class SearchFragment : Fragment() {
+class DirectionFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,23 +24,12 @@ class SearchFragment : Fragment() {
         menuHost.addMenuProvider(object: MenuProvider {
 
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.search_menu, menu)
-
+                menuInflater.inflate(R.menu.direction_menu, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
-                    R.id.action_search -> {
-                        true
-                    }
-                    R.id.action_filter -> {
-                        val filtersBottomSheet = FiltersBottomSheet()
-
-                        filtersBottomSheet.show(
-                            parentFragmentManager,
-                            FiltersBottomSheet.TAG
-                        )
-
+                    R.id.action_bookmark -> {
                         true
                     }
                     else -> false
@@ -48,6 +37,7 @@ class SearchFragment : Fragment() {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_direction, container, false)
     }
 }
