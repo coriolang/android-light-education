@@ -9,13 +9,13 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.coriolang.lighteducation.ui.DirectionFragment"
+        android:name="com.coriolang.lighteducation.ui.TopicFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_direction" />
+        tools:layout="@layout/fragment_topic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
