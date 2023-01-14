@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AuthFragment">
+    tools:context=".ui.auth.AuthFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_field_email"
@@ -13,13 +13,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="E-mail"
+        android:hint="@string/e_mail"
+        app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@+id/text_field_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed">
+        app:layout_constraintVertical_chainStyle="packed"
+        app:startIconDrawable="@drawable/ic_round_email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -34,11 +36,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Password"
+        android:hint="@string/password"
+        app:counterEnabled="true"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/button_create_account"
         app:layout_constraintEnd_toEndOf="@+id/text_field_email"
         app:layout_constraintStart_toStartOf="@+id/text_field_email"
-        app:layout_constraintTop_toBottomOf="@+id/text_field_email">
+        app:layout_constraintTop_toBottomOf="@+id/text_field_email"
+        app:startIconDrawable="@drawable/ic_round_password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -49,10 +55,13 @@
 
     <Button
         android:id="@+id/button_create_account"
+        style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Create account"
+        android:text="@string/create_account"
+        app:icon="@drawable/ic_round_create"
+        app:iconGravity="textStart"
         app:layout_constraintBottom_toTopOf="@+id/button_sign_in"
         app:layout_constraintEnd_toEndOf="@+id/text_field_password"
         app:layout_constraintStart_toStartOf="@+id/text_field_password"
@@ -60,11 +69,13 @@
 
     <Button
         android:id="@+id/button_sign_in"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Sign in"
+        android:text="@string/sign_in"
+        app:icon="@drawable/ic_round_login"
+        app:iconGravity="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button_create_account"
         app:layout_constraintStart_toStartOf="@+id/button_create_account"

@@ -1,7 +1,8 @@
-package com.coriolang.lighteducation
+package com.coriolang.lighteducation.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.coriolang.lighteducation.R
 
 class MainActivity : AppCompatActivity() {
 

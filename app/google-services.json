@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "268535666528",
+    "project_id": "the-light-of-education",
+    "storage_bucket": "the-light-of-education.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268535666528:android:3564d3832744d9b5287005",
+        "android_client_info": {
+          "package_name": "com.coriolang.lighteducation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "268535666528-ldihv0d0ehrafqv3rcq5paronidlil47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDzqSacAOxMi70UPZNaCX3Gkw9roFevsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "268535666528-ldihv0d0ehrafqv3rcq5paronidlil47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

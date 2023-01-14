@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">The Light of Education</string>
+    <string name="display_name">Display name</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create account</string>
+    <string name="eight_symbols">Password must contain at least 8 symbols</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_out">Sign out</string>
 </resources>
