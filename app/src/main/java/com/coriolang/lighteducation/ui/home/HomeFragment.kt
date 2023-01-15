@@ -1,4 +1,4 @@
-package com.coriolang.lighteducation.ui
+package com.coriolang.lighteducation.ui.home
 
 import android.os.Bundle
 import android.view.*
@@ -63,5 +63,5 @@ class HomeFragment : Fragment() {
         )
     }
 
-    private fun setupViews() {}
+    private fun setupViews() {  }
 }

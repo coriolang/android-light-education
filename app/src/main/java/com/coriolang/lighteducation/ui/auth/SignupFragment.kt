@@ -35,8 +35,8 @@ class SignupFragment : Fragment() {
     }
 
     private fun setupViews() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            launch { observeSignedInState() }
+        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
+            launch { observeSignedUpState() }
             launch { observeException() }
         }
 
@@ -44,9 +44,10 @@ class SignupFragment : Fragment() {
         setupCreateButton()
     }
 
-    private suspend fun observeSignedInState() {
-        authViewModel.signedIn.collect { signedIn ->
-            if (signedIn) {
+    private suspend fun observeSignedUpState() {
+        authViewModel.signedUp.collect { signedUp ->
+            if (signedUp) {
+                authViewModel.saveUser()
                 navigateToAuth()
             }
         }
@@ -60,9 +61,7 @@ class SignupFragment : Fragment() {
 
     private suspend fun observeException() {
         authViewModel.exception.collect { message ->
-            if (message.isNotEmpty()) {
-                showToast(message)
-            }
+            if (message.isNotEmpty()) { showToast(message) }
         }
     }
 

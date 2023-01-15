@@ -1,4 +1,4 @@
-package com.coriolang.lighteducation.data
+package com.coriolang.lighteducation.model
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
@@ -13,11 +13,23 @@ class Authentication {
 
     private val auth: FirebaseAuth = Firebase.auth
 
+    private val _signedUp = MutableStateFlow(false)
+    val signedUp = _signedUp.asStateFlow()
+
     private val _signedIn = MutableStateFlow(isSignedIn())
     val signedIn = _signedIn.asStateFlow()
 
     private val _exception = MutableStateFlow("")
     val exception = _exception.asStateFlow()
+
+    val userId: String
+        get() = auth.currentUser?.uid ?: ""
+
+    val userEmail: String
+        get() = auth.currentUser?.email ?: ""
+
+    val displayName: String
+        get() = auth.currentUser?.displayName ?: ""
 
     private fun isSignedIn(): Boolean =
         auth.currentUser != null
@@ -42,6 +54,9 @@ class Authentication {
                         .addOnCompleteListener { addDisplayName ->
                             if (addDisplayName.isSuccessful) {
                                 Log.d(TAG, "updateProfile:success")
+
+                                // update ui state
+                                _signedUp.update { true }
                             } else {
                                 Log.d(TAG, "updateProfile:failure", addDisplayName.exception)
 
@@ -51,9 +66,6 @@ class Authentication {
                                 }
                             }
                         }
-
-                    // update ui state
-                    _signedIn.update { true }
                 } else {
                     Log.w(TAG, "createUserWithEmail:failure", createUser.exception)
 

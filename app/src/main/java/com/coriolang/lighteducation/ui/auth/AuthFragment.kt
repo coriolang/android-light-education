@@ -35,7 +35,7 @@ class AuthFragment : Fragment() {
     }
 
     private fun setupViews() {
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
             launch { observeSignedInState() }
             launch { observeException() }
         }
@@ -47,9 +47,7 @@ class AuthFragment : Fragment() {
 
     private suspend fun observeSignedInState() {
         authViewModel.signedIn.collect { signedIn ->
-            if (signedIn) {
-                navigateToHome()
-            }
+            if (signedIn) { navigateToHome() }
         }
     }
 
@@ -61,9 +59,7 @@ class AuthFragment : Fragment() {
 
     private suspend fun observeException() {
         authViewModel.exception.collect { message ->
-            if (message.isNotEmpty()) {
-                showToast(message)
-            }
+            if (message.isNotEmpty()) { showToast(message) }
         }
     }
 
