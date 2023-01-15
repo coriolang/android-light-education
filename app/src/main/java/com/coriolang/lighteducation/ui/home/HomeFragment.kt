@@ -7,10 +7,13 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.coriolang.lighteducation.R
 import com.coriolang.lighteducation.databinding.FragmentHomeBinding
 import com.coriolang.lighteducation.ui.auth.AuthViewModel
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -18,6 +21,8 @@ class HomeFragment : Fragment() {
 
     private val authViewModel:
             AuthViewModel by viewModels { AuthViewModel.Factory }
+    private val homeViewModel:
+            HomeViewModel by viewModels { HomeViewModel.Factory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,5 +68,50 @@ class HomeFragment : Fragment() {
         )
     }
 
-    private fun setupViews() {  }
+    private fun setupViews() {
+        setupDirectionsCard()
+        setupBookmarksCard()
+        setupTopicsRecyclerView()
+    }
+
+    private fun setupDirectionsCard() {
+        binding.cardDirections.setOnClickListener {
+            navigateToSearch(null)
+        }
+    }
+
+    private fun navigateToSearch(userId: String?) {
+        val action = HomeFragmentDirections
+            .actionHomeFragmentToSearchFragment(userId)
+        findNavController().navigate(action)
+    }
+
+    private fun setupBookmarksCard() {
+        binding.cardBookmarks.setOnClickListener {
+            navigateToSearch(authViewModel.userId)
+        }
+    }
+
+    private fun setupTopicsRecyclerView() {
+        val adapter = TopicAdapter { topicId ->
+            val action = HomeFragmentDirections
+                .actionHomeFragmentToTopicFragment(topicId)
+            findNavController().navigate(action)
+        }
+
+        binding.recyclerViewTopics
+            .layoutManager = LinearLayoutManager(context)
+        binding.recyclerViewTopics.adapter = adapter
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            observeTopics(adapter)
+        }
+    }
+
+    private suspend fun observeTopics(adapter: TopicAdapter) {
+        homeViewModel.startListenTopics(authViewModel.userId)
+        homeViewModel.topics.collect { topics ->
+            adapter.submitList(topics)
+        }
+    }
 }

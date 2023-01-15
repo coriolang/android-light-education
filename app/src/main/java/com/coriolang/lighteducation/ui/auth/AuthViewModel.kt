@@ -18,6 +18,9 @@ class AuthViewModel(
     private val database: Database
 ) : ViewModel() {
 
+    val userId: String
+        get() = authentication.userId
+
     val signedUp: StateFlow<Boolean>
         get() = authentication.signedUp
 

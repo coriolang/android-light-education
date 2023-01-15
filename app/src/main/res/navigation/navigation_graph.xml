@@ -52,12 +52,20 @@
         <action
             android:id="@+id/action_searchFragment_to_directionFragment"
             app:destination="@id/directionFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/topicFragment"
         android:name="com.coriolang.lighteducation.ui.TopicFragment"
         android:label="fragment_topic"
-        tools:layout="@layout/fragment_topic" />
+        tools:layout="@layout/fragment_topic" >
+        <argument
+            android:name="topicId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/directionFragment"
         android:name="com.coriolang.lighteducation.ui.DirectionFragment"

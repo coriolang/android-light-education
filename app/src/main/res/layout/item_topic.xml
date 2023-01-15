@@ -22,26 +22,15 @@
         tools:text="Topic title" />
 
     <TextView
-        android:id="@+id/text_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textAppearance="?textAppearanceBody1"
-        app:layout_constraintStart_toStartOf="@+id/text_title"
-        app:layout_constraintTop_toBottomOf="@+id/text_title"
-        tools:text="Username:" />
-
-    <TextView
         android:id="@+id/text_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
         android:textAppearance="?textAppearanceBody1"
-        app:layout_constraintBottom_toBottomOf="@+id/text_username"
         app:layout_constraintEnd_toEndOf="@+id/text_date"
-        app:layout_constraintStart_toEndOf="@+id/text_username"
-        app:layout_constraintTop_toTopOf="@+id/text_username"
-        tools:text="Text Message" />
+        app:layout_constraintStart_toStartOf="@+id/text_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_title"
+        tools:text="Message" />
 
     <TextView
         android:id="@+id/text_date"
@@ -61,7 +50,7 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/text_message"
-        app:layout_constraintStart_toStartOf="@+id/text_username"
-        app:layout_constraintTop_toBottomOf="@id/text_username" />
+        app:layout_constraintStart_toStartOf="@+id/text_message"
+        app:layout_constraintTop_toBottomOf="@+id/text_message" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
