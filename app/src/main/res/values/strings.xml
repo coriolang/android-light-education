@@ -7,4 +7,13 @@
     <string name="eight_symbols">Password must contain at least 8 symbols</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_out">Sign out</string>
+    <string name="middle">Middle</string>
+    <string name="undergraduate">Undergraduate</string>
+    <string name="magistracy">Magistracy</string>
+    <string name="graduate_school">Graduate school</string>
+    <string name="full_time">Full-time</string>
+    <string name="part_time">Part-time</string>
+    <string name="evening">Evening</string>
+    <string name="remote">Remote</string>
+    <string name="accelerated">Accelerated</string>
 </resources>
