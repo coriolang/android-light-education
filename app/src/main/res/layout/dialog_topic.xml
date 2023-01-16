@@ -1,41 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:drawablePadding="4dp"
+        android:text="@string/new_topic"
+        android:textAppearance="?textAppearanceHeadline6"
+        app:drawableStartCompat="@drawable/ic_round_chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_field_topic"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
-        android:hint="Topic">
+        android:layout_marginTop="16dp"
+        android:hint="@string/topic"
+        app:layout_constraintEnd_toEndOf="@+id/text_title"
+        app:layout_constraintStart_toStartOf="@+id/text_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="48"
-            android:inputType="textShortMessage" />
+            android:inputType="textShortMessage"
+            android:maxLength="48" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_field_message"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:hint="Message">
+        android:layout_marginTop="16dp"
+        android:hint="@string/message"
+        app:layout_constraintEnd_toEndOf="@+id/text_field_topic"
+        app:layout_constraintStart_toStartOf="@+id/text_field_topic"
+        app:layout_constraintTop_toBottomOf="@+id/text_field_topic">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
             android:maxLines="8"
-            android:scrollbars="vertical"
-            android:inputType="textMultiLine" />
+            android:scrollbars="vertical" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/button_create"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/create"
+        app:icon="@drawable/ic_round_create"
+        app:iconGravity="textStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/text_field_message"
+        app:layout_constraintTop_toBottomOf="@+id/text_field_message" />
+
+    <Button
+        android:id="@+id/button_dismiss"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/cancel"
+        app:icon="@drawable/ic_round_cancel"
+        app:iconGravity="textStart"
+        app:layout_constraintBottom_toBottomOf="@+id/button_create"
+        app:layout_constraintEnd_toStartOf="@+id/button_create"
+        app:layout_constraintTop_toTopOf="@+id/button_create" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

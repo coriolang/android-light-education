@@ -30,4 +30,9 @@
     <string name="search">Search</string>
     <string name="filter">Filter</string>
     <string name="off_filters">Off filters</string>
+    <string name="new_topic">New Topic</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
+    <string name="topic">Topic</string>
+    <string name="message">Message</string>
 </resources>

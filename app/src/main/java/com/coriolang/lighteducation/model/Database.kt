@@ -11,6 +11,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import java.util.UUID
 
 class Database {
 
@@ -28,6 +29,15 @@ class Database {
     private val _institutions = MutableStateFlow(emptyList<Institution>())
     val institutions = _institutions.asStateFlow()
 
+    private val _direction = MutableStateFlow(Direction())
+    val direction = _direction.asStateFlow()
+
+    private val _institution = MutableStateFlow(Institution())
+    val institution = _institution.asStateFlow()
+
+    private val _topicId = MutableStateFlow("")
+    val topicId = _topicId.asStateFlow()
+
     suspend fun writeUser(id: String, name: String, email: String) {
         val user = User(
             id = id,
@@ -39,10 +49,30 @@ class Database {
         db.child(USERS_KEY).child(user.id!!).setValue(user)
     }
 
-    suspend fun startListenTopics(userId: String) {
-        val topicsQuery = db.child(TOPICS_KEY)
+    suspend fun writeTopic(
+        directionId: String,
+        userId: String,
+        title: String,
+        text: String
+    ) {
+        val topic = Topic(
+            id = UUID.randomUUID().toString(),
+            directionId = directionId,
+            userId = userId,
+            title = title,
+            text = text,
+            timestamp = System.currentTimeMillis()
+        )
 
-        topicsQuery.addValueEventListener(object : ValueEventListener {
+        db.child(TOPICS_KEY).child(topic.id!!).setValue(topic)
+
+        _topicId.update { topic.id }
+    }
+
+    suspend fun startListenTopicsByUser(userId: String) {
+        val topicsRef = db.child(TOPICS_KEY)
+
+        topicsRef.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val list = snapshot
@@ -50,6 +80,30 @@ class Database {
                     ?.values?.toList()
                     ?.filter { topic ->
                         topic.userId == userId
+                    }
+
+                if (list != null) {
+                    _topics.update { list }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "loadTopics:onCancelled", error.toException())
+            }
+        })
+    }
+
+    suspend fun startListenTopicsByDirection(directionId: String) {
+        val topicsRef = db.child(TOPICS_KEY)
+
+        topicsRef.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list = snapshot
+                    .getValue<Map<String, Topic>>()
+                    ?.values?.toList()
+                    ?.filter { topic ->
+                        topic.directionId == directionId
                     }
 
                 if (list != null) {
@@ -168,6 +222,40 @@ class Database {
 
                 if (list != null) {
                     _subjects.update { list }
+                }
+            }
+            .addOnFailureListener {
+                Log.e(TAG, "Error getting data", it)
+            }
+    }
+
+    suspend fun getDirection(id: String) {
+        db.child(DIRECTIONS_KEY).child(id).get()
+            .addOnSuccessListener { snapshot ->
+                Log.i(TAG, "Got value ${snapshot.value}")
+
+                val direction = snapshot
+                    .getValue<Direction>()
+
+                if (direction != null) {
+                    _direction.update { direction }
+                }
+            }
+            .addOnFailureListener {
+                Log.e(TAG, "Error getting data", it)
+            }
+    }
+
+    suspend fun getInstitution(id: String) {
+        db.child(INSTITUTIONS_KEY).child(id).get()
+            .addOnSuccessListener { snapshot ->
+                Log.i(TAG, "Got value ${snapshot.value}")
+
+                val institution = snapshot
+                    .getValue<Institution>()
+
+                if (institution != null) {
+                    _institution.update { institution }
                 }
             }
             .addOnFailureListener {

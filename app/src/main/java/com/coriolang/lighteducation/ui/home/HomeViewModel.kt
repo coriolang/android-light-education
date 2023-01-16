@@ -21,7 +21,7 @@ class HomeViewModel(
 
     fun startListenTopics(userId: String) {
         viewModelScope.launch {
-            database.startListenTopics(userId)
+            database.startListenTopicsByUser(userId)
         }
     }
 
