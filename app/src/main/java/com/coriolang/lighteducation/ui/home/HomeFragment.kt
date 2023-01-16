@@ -70,26 +70,19 @@ class HomeFragment : Fragment() {
 
     private fun setupViews() {
         setupDirectionsCard()
-        setupBookmarksCard()
         setupTopicsRecyclerView()
     }
 
     private fun setupDirectionsCard() {
         binding.cardDirections.setOnClickListener {
-            navigateToSearch(null)
+            navigateToSearch()
         }
     }
 
-    private fun navigateToSearch(userId: String?) {
+    private fun navigateToSearch() {
         val action = HomeFragmentDirections
-            .actionHomeFragmentToSearchFragment(userId)
+            .actionHomeFragmentToSearchFragment()
         findNavController().navigate(action)
-    }
-
-    private fun setupBookmarksCard() {
-        binding.cardBookmarks.setOnClickListener {
-            navigateToSearch(authViewModel.userId)
-        }
     }
 
     private fun setupTopicsRecyclerView() {

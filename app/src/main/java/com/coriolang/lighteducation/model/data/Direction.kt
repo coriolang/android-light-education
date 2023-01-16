@@ -2,16 +2,18 @@ package com.coriolang.lighteducation.model.data
 
 import android.content.Context
 import com.coriolang.lighteducation.R
+import com.google.firebase.database.IgnoreExtraProperties
 
+@IgnoreExtraProperties
 data class Direction(
-    val id: String,
-    val institutionId: String,
-    val code: String,
-    val name: String,
-    val level: Int,
-    val format: Int,
-    val money: Int,
-    val score: Int
+    val id: String? = null,
+    val institutionId: String? = null,
+    val code: String? = null,
+    val name: String? = null,
+    val level: Long? = null,
+    val format: Long? = null,
+    val money: Long? = null,
+    val score: Long? = null
 )
 
 enum class Level {
@@ -28,19 +30,18 @@ fun Level.toString(context: Context) = when (this) {
     Level.GRADUATE_SCHOOL -> context.getString(R.string.graduate_school)
 }
 
-fun Level.toInt() = when (this) {
-    Level.MIDDLE -> 0
-    Level.UNDERGRADUATE -> 1
-    Level.MAGISTRACY -> 2
-    Level.GRADUATE_SCHOOL -> 3
+fun Level.toLong() = when (this) {
+    Level.MIDDLE -> 0L
+    Level.UNDERGRADUATE -> 1L
+    Level.MAGISTRACY -> 2L
+    Level.GRADUATE_SCHOOL -> 3L
 }
 
-fun Int.toLevel() = when (this) {
-    0 -> Level.MIDDLE
-    1 -> Level.UNDERGRADUATE
-    2 -> Level.MAGISTRACY
-    3 -> Level.GRADUATE_SCHOOL
-    else -> -1
+fun Long.toLevel() = when (this) {
+    0L -> Level.MIDDLE
+    1L -> Level.UNDERGRADUATE
+    2L -> Level.MAGISTRACY
+    else -> Level.GRADUATE_SCHOOL
 }
 
 enum class Format {
@@ -59,19 +60,18 @@ fun Format.toString(context: Context) = when (this) {
     Format.ACCELERATED -> context.getString(R.string.accelerated)
 }
 
-fun Format.toInt() = when (this) {
-    Format.FULL_TIME -> 0
-    Format.PART_TIME -> 1
-    Format.EVENING -> 2
-    Format.REMOTE -> 3
-    Format.ACCELERATED -> 4
+fun Format.toLong() = when (this) {
+    Format.FULL_TIME -> 0L
+    Format.PART_TIME -> 1L
+    Format.EVENING -> 2L
+    Format.REMOTE -> 3L
+    Format.ACCELERATED -> 4L
 }
 
-fun Int.toFormat() = when (this) {
-    0 -> Format.FULL_TIME
-    1 -> Format.PART_TIME
-    2 -> Format.EVENING
-    3 -> Format.REMOTE
-    4 -> Format.ACCELERATED
-    else -> -1
+fun Long.toFormat() = when (this) {
+    0L -> Format.FULL_TIME
+    1L -> Format.PART_TIME
+    2L -> Format.EVENING
+    3L -> Format.REMOTE
+    else -> Format.ACCELERATED
 }

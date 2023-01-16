@@ -1,9 +1,12 @@
 package com.coriolang.lighteducation.model.data
 
+import com.google.firebase.database.IgnoreExtraProperties
+
+@IgnoreExtraProperties
 data class Institution(
-    val id: String,
-    val subjectId: String,
-    val name: String,
-    val address: String,
-    val url: String
+    val id: String? = null,
+    val subject: String? = null,
+    val name: String? = null,
+    val address: String? = null,
+    val url: String? = null
 )

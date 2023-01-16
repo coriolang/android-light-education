@@ -16,4 +16,18 @@
     <string name="evening">Evening</string>
     <string name="remote">Remote</string>
     <string name="accelerated">Accelerated</string>
+    <string name="directions">Directions</string>
+    <string name="tap_to_search">Tap to search</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="tap_to_see_the_list">Tap to see the list</string>
+    <string name="topics">Topics</string>
+    <string name="filter_results">Filter results</string>
+    <string name="subject">Subject</string>
+    <string name="choose_level">Choose level</string>
+    <string name="tuition_fee">Tuition fee</string>
+    <string name="choose_format">Choose format</string>
+    <string name="passing_score">Passing score</string>
+    <string name="search">Search</string>
+    <string name="filter">Filter</string>
+    <string name="off_filters">Off filters</string>
 </resources>

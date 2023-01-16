@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.FiltersBottomSheet">
+    tools:context=".ui.search.FiltersBottomSheet">
 
     <TextView
         android:id="@+id/text_title"
@@ -12,12 +12,31 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Filter results"
+        android:layout_marginEnd="8dp"
+        android:text="@string/filter_results"
         android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_off_filters"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_off_filters"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/off_filters"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        app:icon="@drawable/ic_round_filter_list_off"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_title" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/menu_subject"
@@ -25,8 +44,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Subject"
-        app:layout_constraintEnd_toEndOf="@+id/text_title"
+        android:hint="@string/subject"
+        app:layout_constraintEnd_toEndOf="@+id/button_off_filters"
         app:layout_constraintStart_toStartOf="@+id/text_title"
         app:layout_constraintTop_toBottomOf="@+id/text_title">
 
@@ -42,7 +61,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Choose level"
+        android:text="@string/choose_level"
         android:textAppearance="?textAppearanceSubtitle1"
         app:layout_constraintEnd_toEndOf="@+id/menu_subject"
         app:layout_constraintStart_toStartOf="@+id/menu_subject"
@@ -55,35 +74,36 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/text_choose_level"
         app:layout_constraintStart_toStartOf="@+id/text_choose_level"
-        app:layout_constraintTop_toBottomOf="@+id/text_choose_level">
+        app:layout_constraintTop_toBottomOf="@+id/text_choose_level"
+        app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_level_middle"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Middle" />
+            android:text="@string/middle" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_level_undergraduate"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Undergraduate" />
+            android:text="@string/undergraduate" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_level_magistracy"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Magistracy" />
+            android:text="@string/magistracy" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_level_graduate"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Graduate school" />
+            android:text="@string/graduate_school" />
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -93,7 +113,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Tuition fee"
+        android:hint="@string/tuition_fee"
         app:layout_constraintEnd_toEndOf="@+id/chips_level"
         app:layout_constraintStart_toStartOf="@+id/chips_level"
         app:layout_constraintTop_toBottomOf="@+id/chips_level">
@@ -110,7 +130,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Choose format"
+        android:text="@string/choose_format"
         android:textAppearance="?textAppearanceSubtitle1"
         app:layout_constraintEnd_toEndOf="@+id/text_field_money"
         app:layout_constraintStart_toStartOf="@+id/text_field_money"
@@ -123,42 +143,43 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/text_choose_format"
         app:layout_constraintStart_toStartOf="@+id/text_choose_format"
-        app:layout_constraintTop_toBottomOf="@+id/text_choose_format">
+        app:layout_constraintTop_toBottomOf="@+id/text_choose_format"
+        app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_format_full"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Full-time" />
+            android:text="@string/full_time" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_format_part"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Part-time" />
+            android:text="@string/part_time" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_format_evening"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Evening" />
+            android:text="@string/evening" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_format_remote"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remote" />
+            android:text="@string/remote" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_format_accelerated"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Accelerated" />
+            android:text="@string/accelerated" />
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -168,8 +189,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:hint="Passing score"
+        android:layout_marginBottom="32dp"
+        android:hint="@string/passing_score"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/chips_format"
         app:layout_constraintStart_toStartOf="@+id/chips_format"
