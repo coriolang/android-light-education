@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="display_name">Отображаемое имя</string>
+    <string name="password">Пароль</string>
+    <string name="create_account">Зарегестрироваться</string>
+    <string name="eight_symbols">Пароль должен содержать не менее 8 символов</string>
+    <string name="sign_in">Войти</string>
+    <string name="sign_out">Выйти</string>
+    <string name="middle">СПО</string>
+    <string name="undergraduate">Бакалавриат</string>
+    <string name="magistracy">Магистратура</string>
+    <string name="graduate_school">Аспирантура</string>
+    <string name="full_time">Очное</string>
+    <string name="part_time">Заочное</string>
+    <string name="evening">Вечернее</string>
+    <string name="remote">Удаленное</string>
+    <string name="accelerated">Ускоренное</string>
+    <string name="directions">Направления</string>
+    <string name="tap_to_search">Нажмите для поиска</string>
+    <string name="topics">Обсуждения</string>
+    <string name="filter_results">Фильтры</string>
+    <string name="subject">Субъект</string>
+    <string name="choose_level">Выберите уровень образования</string>
+    <string name="tuition_fee">Плата за обучение</string>
+    <string name="choose_format">Выберите форму обучения</string>
+    <string name="passing_score">Проходной балл</string>
+    <string name="search">Поиск</string>
+    <string name="filter">Фильтр</string>
+    <string name="off_filters">Сбросить фильтры</string>
+    <string name="new_topic">Новое обсуждение</string>
+    <string name="cancel">Отмена</string>
+    <string name="create">Создать</string>
+    <string name="topic">Обсуждение</string>
+    <string name="message">Сообщение</string>
+    <string name="enter_message">Введите сообщение</string>
+    <string name="code">Код специальности</string>
+    <string name="level">Уровень образования</string>
+    <string name="format">Форма обучения</string>
+    <string name="score_passing">Проходной балл</string>
+    <string name="address">Адрес</string>
+    <string name="create_topic">Создать обсуждение</string>
+</resources>

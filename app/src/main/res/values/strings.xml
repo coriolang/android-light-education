@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">The Light of Education</string>
+    <string name="app_name" translatable="false">The Light of Education</string>
     <string name="display_name">Display name</string>
-    <string name="e_mail">E-mail</string>
+    <string name="e_mail" translatable="false">E-mail</string>
     <string name="password">Password</string>
     <string name="create_account">Create account</string>
     <string name="eight_symbols">Password must contain at least 8 symbols</string>
@@ -18,8 +18,6 @@
     <string name="accelerated">Accelerated</string>
     <string name="directions">Directions</string>
     <string name="tap_to_search">Tap to search</string>
-    <string name="bookmarks">Bookmarks</string>
-    <string name="tap_to_see_the_list">Tap to see the list</string>
     <string name="topics">Topics</string>
     <string name="filter_results">Filter results</string>
     <string name="subject">Subject</string>
@@ -41,6 +39,6 @@
     <string name="format">Format</string>
     <string name="score_passing">Score passing</string>
     <string name="address">Address</string>
-    <string name="url">URL</string>
+    <string name="url" translatable="false">URL</string>
     <string name="create_topic">Create topic</string>
 </resources>
