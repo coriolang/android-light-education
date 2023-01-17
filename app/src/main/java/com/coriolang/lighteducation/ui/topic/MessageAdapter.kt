@@ -39,7 +39,7 @@ class MessageAdapter(
             if (message.userId == messageOwnerId) {
                 binding.root.gravity = Gravity.END
                 binding.cardMessage.setCardBackgroundColor(
-                    Color.parseColor("#64dd17")
+                    Color.parseColor("#7cb342")
                 )
             }
         }

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:layout_weight="2"
-        app:cardBackgroundColor="@color/message"
+        app:cardBackgroundColor="@color/secondaryColor"
         app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
