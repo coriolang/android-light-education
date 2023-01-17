@@ -35,4 +35,12 @@
     <string name="create">Create</string>
     <string name="topic">Topic</string>
     <string name="message">Message</string>
+    <string name="enter_message">Enter message</string>
+    <string name="code">Code</string>
+    <string name="level">Level</string>
+    <string name="format">Format</string>
+    <string name="score_passing">Score passing</string>
+    <string name="address">Address</string>
+    <string name="url">URL</string>
+    <string name="create_topic">Create topic</string>
 </resources>

@@ -2,6 +2,7 @@ package com.coriolang.lighteducation.model
 
 import android.util.Log
 import com.coriolang.lighteducation.model.data.*
+import com.coriolang.lighteducation.ui.topic.MessageWithUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -38,6 +39,15 @@ class Database {
     private val _topicId = MutableStateFlow("")
     val topicId = _topicId.asStateFlow()
 
+    private val _topic = MutableStateFlow(Topic())
+    val topic = _topic.asStateFlow()
+
+    private val _messages = MutableStateFlow(emptyList<MessageWithUser>())
+    val messages = _messages.asStateFlow()
+
+    private val _users = MutableStateFlow(emptyList<User>())
+    private val users = _users.asStateFlow()
+
     suspend fun writeUser(id: String, name: String, email: String) {
         val user = User(
             id = id,
@@ -69,6 +79,18 @@ class Database {
         _topicId.update { topic.id }
     }
 
+    suspend fun writeMessage(topicId: String, userId: String, text: String) {
+        val message = Message(
+            id = UUID.randomUUID().toString(),
+            topicId = topicId,
+            userId = userId,
+            text = text,
+            timestamp = System.currentTimeMillis()
+        )
+
+        db.child(MESSAGES_REF).child(message.id!!).setValue(message)
+    }
+
     suspend fun startListenTopicsByUser(userId: String) {
         val topicsRef = db.child(TOPICS_KEY)
 
@@ -80,6 +102,9 @@ class Database {
                     ?.values?.toList()
                     ?.filter { topic ->
                         topic.userId == userId
+                    }
+                    ?.sortedBy { topic ->
+                        topic.timestamp
                     }
 
                 if (list != null) {
@@ -104,6 +129,9 @@ class Database {
                     ?.values?.toList()
                     ?.filter { topic ->
                         topic.directionId == directionId
+                    }
+                    ?.sortedBy { topic ->
+                        topic.timestamp
                     }
 
                 if (list != null) {
@@ -201,6 +229,9 @@ class Database {
                             direction.score!! == score.toLong()
                         }
                     }?.toList()
+                    ?.sortedBy { direction ->
+                        direction.code
+                    }
 
                 if (list != null) {
                     _directions.update { list }
@@ -219,6 +250,7 @@ class Database {
                 val list = snapshot
                     .getValue<Map<String, String>>()
                     ?.values?.toList()
+                    ?.sorted()
 
                 if (list != null) {
                     _subjects.update { list }
@@ -263,6 +295,88 @@ class Database {
             }
     }
 
+    suspend fun getTopic(topicId: String) {
+        db.child(TOPICS_KEY).child(topicId).get()
+            .addOnSuccessListener { snapshot ->
+                Log.i(TAG, "Got value ${snapshot.value}")
+
+                val topic = snapshot
+                    .getValue<Topic>()
+
+                if (topic != null) {
+                    _topic.update { topic }
+                }
+            }
+            .addOnFailureListener {
+                Log.e(TAG, "Error getting data", it)
+            }
+    }
+
+    suspend fun startListenMessages(topicId: String) {
+        val messagesRef = db.child(MESSAGES_REF)
+
+        messagesRef.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list = snapshot
+                    .getValue<Map<String, Message>>()
+                    ?.values?.toList()
+                    ?.filter { message ->
+                        message.topicId == topicId
+                    }
+                    ?.map { message ->
+                        val user = users.value
+                            .find { it.id == message.userId }
+
+                        if (user != null) {
+                            MessageWithUser(
+                                id = message.id!!,
+                                userId = user.id!!,
+                                username = user.name!!,
+                                expert = user.expert!!,
+                                text = message.text!!,
+                                timestamp = message.timestamp!!
+                            )
+                        } else {
+                            MessageWithUser()
+                        }
+                    }
+                    ?.sortedByDescending { message ->
+                        message.timestamp
+                    }
+
+                if (list != null) {
+                    _messages.update { list }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "loadMessages:onCancelled", error.toException())
+            }
+        })
+    }
+
+    suspend fun startListenUsers() {
+        val usersRef = db.child(USERS_KEY)
+
+        usersRef.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list = snapshot
+                    .getValue<Map<String, User>>()
+                    ?.values?.toList()
+
+                if (list != null) {
+                    _users.update { list }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "loadUsers:onCancelled", error.toException())
+            }
+        })
+    }
+
     companion object {
         private const val TAG = "Database"
 
@@ -274,5 +388,6 @@ class Database {
         private const val SUBJECTS_KEY = "subjects"
         private const val INSTITUTIONS_KEY = "institutions"
         private const val DIRECTIONS_KEY = "directions"
+        private const val MESSAGES_REF = "messages"
     }
 }

@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/topicFragment"
-        android:name="com.coriolang.lighteducation.ui.TopicFragment"
+        android:name="com.coriolang.lighteducation.ui.topic.TopicFragment"
         android:label="fragment_topic"
         tools:layout="@layout/fragment_topic">
         <argument

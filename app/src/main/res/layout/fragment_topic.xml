@@ -4,7 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.TopicFragment">
+    tools:context=".ui.topic.TopicFragment">
+
+    <TextView
+        android:id="@+id/text_topic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        tools:text="Topic"
+        android:drawablePadding="4dp"
+        android:textAppearance="?textAppearanceHeadline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:drawableStartCompat="@drawable/ic_round_chat" />
+
+    <TextView
+        android:id="@+id/text_topic_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="?textAppearanceBody1"
+        tools:text="Message"
+        app:layout_constraintEnd_toEndOf="@+id/text_topic"
+        app:layout_constraintStart_toStartOf="@+id/text_topic"
+        app:layout_constraintTop_toBottomOf="@+id/text_topic" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_topic_message" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_messages"
@@ -14,14 +50,14 @@
         app:layout_constraintBottom_toTopOf="@+id/text_field_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
         tools:listitem="@layout/item_message" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_field_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter message"
+        android:hint="@string/enter_message"
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_round_send"
         app:layout_constraintBottom_toBottomOf="parent"
