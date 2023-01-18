@@ -18,21 +18,21 @@ class TopicAdapter(
         private val context: Context,
         private val binding: ItemTopicBinding,
         private val onTopicClicked: (String) -> Unit
-        ) : RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-            fun bind(topic: Topic) {
-                binding.textTitle.text = topic.title
-                binding.textDate.text = DateUtils.formatDateTime(
-                    context,
-                    topic.timestamp ?: 0L,
-                    DateUtils.FORMAT_SHOW_DATE
-                )
-                binding.textMessage.text = topic.text
+        fun bind(topic: Topic) {
+            binding.textTitle.text = topic.title
+            binding.textDate.text = DateUtils.formatDateTime(
+                context,
+                topic.timestamp ?: 0L,
+                DateUtils.FORMAT_SHOW_DATE
+            )
+            binding.textMessage.text = topic.text
 
-                itemView.setOnClickListener {
-                    onTopicClicked(topic.id!!)
-                }
+            itemView.setOnClickListener {
+                onTopicClicked(topic.id!!)
             }
+        }
     }
 
     override fun onCreateViewHolder(

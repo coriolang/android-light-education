@@ -1,7 +1,9 @@
 package com.coriolang.lighteducation.ui.direction
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -76,9 +78,6 @@ class DirectionFragment : Fragment() {
             directionViewModel.institution.collect { institution ->
                 binding.textInstitutionName.text = institution.name
                 binding.textAddress.text = institution.address
-                binding.textUrl.text = institution.url
-
-                // click listener for url textView
             }
         }
     }

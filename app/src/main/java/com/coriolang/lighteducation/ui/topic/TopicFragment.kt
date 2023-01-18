@@ -1,10 +1,11 @@
 package com.coriolang.lighteducation.ui.topic
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
@@ -80,9 +81,18 @@ class TopicFragment : Fragment() {
             val text = binding.textFieldMessage
                 .editText?.text.toString()
 
-            topicViewModel.writeMessage(topicId, userId, text)
-
-            binding.textFieldMessage.editText?.text = null
+            if (text.isNotEmpty()) {
+                topicViewModel.writeMessage(topicId, userId, text)
+                binding.textFieldMessage.editText?.text = null
+            }
         }
+    }
+
+    private fun showToast(text: String) {
+        Toast.makeText(
+            context,
+            text,
+            Toast.LENGTH_LONG
+        ).show()
     }
 }

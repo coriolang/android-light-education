@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.coriolang.lighteducation.R
 import com.coriolang.lighteducation.databinding.DialogTopicBinding
 
 class TopicDialog(
@@ -41,9 +43,12 @@ class TopicDialog(
             val message = binding.textFieldMessage
                 .editText?.text.toString()
 
-            onCreateClicked(topic, message)
-
-            dismiss()
+            if (topic.isEmpty() || message.isEmpty()) {
+                showToast(getString(R.string.empty_text_field))
+            } else {
+                onCreateClicked(topic, message)
+                dismiss()
+            }
         }
     }
 
@@ -51,6 +56,14 @@ class TopicDialog(
         binding.buttonDismiss.setOnClickListener {
             dismiss()
         }
+    }
+
+    private fun showToast(text: String) {
+        Toast.makeText(
+            context,
+            text,
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     companion object {

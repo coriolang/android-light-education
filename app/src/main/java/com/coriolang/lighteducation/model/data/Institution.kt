@@ -7,6 +7,5 @@ data class Institution(
     val id: String? = null,
     val subject: String? = null,
     val name: String? = null,
-    val address: String? = null,
-    val url: String? = null
+    val address: String? = null
 )

@@ -13,13 +13,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:textAppearance="?textAppearanceHeadline6"
         android:drawablePadding="4dp"
+        android:textAppearance="?textAppearanceHeadline6"
+        app:drawableStartCompat="@drawable/ic_round_school"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Direction"
-        app:drawableStartCompat="@drawable/ic_round_school" />
+        tools:text="Direction" />
 
     <TextView
         android:id="@+id/text_code_label"
@@ -75,11 +75,11 @@
         android:id="@+id/text_format"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Format"
         android:textAppearance="?textAppearanceBody1"
         app:layout_constraintBottom_toBottomOf="@+id/text_choose_format"
         app:layout_constraintEnd_toEndOf="@+id/text_level"
-        app:layout_constraintTop_toTopOf="@+id/text_choose_format" />
+        app:layout_constraintTop_toTopOf="@+id/text_choose_format"
+        tools:text="Format" />
 
     <TextView
         android:id="@+id/text_money_label"
@@ -115,22 +115,22 @@
         android:id="@+id/text_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Score"
         android:textAppearance="?textAppearanceBody1"
         app:layout_constraintBottom_toBottomOf="@+id/text_score_label"
         app:layout_constraintEnd_toEndOf="@+id/text_money"
-        app:layout_constraintTop_toTopOf="@+id/text_score_label" />
+        app:layout_constraintTop_toTopOf="@+id/text_score_label"
+        tools:text="Score" />
 
     <TextView
         android:id="@+id/text_institution_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        tools:text="Institution"
         android:textAppearance="?textAppearanceBody2"
         app:layout_constraintEnd_toEndOf="@+id/text_score"
         app:layout_constraintStart_toStartOf="@+id/text_score_label"
-        app:layout_constraintTop_toBottomOf="@+id/text_score_label" />
+        app:layout_constraintTop_toBottomOf="@+id/text_score_label"
+        tools:text="Institution" />
 
     <TextView
         android:id="@+id/text_address"
@@ -144,17 +144,6 @@
         app:layout_constraintTop_toBottomOf="@+id/text_institution_name" />
 
     <TextView
-        android:id="@+id/text_url"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/url"
-        android:textAppearance="?textAppearanceBody2"
-        app:layout_constraintEnd_toEndOf="@+id/text_address"
-        app:layout_constraintStart_toStartOf="@+id/text_address"
-        app:layout_constraintTop_toBottomOf="@+id/text_address" />
-
-    <TextView
         android:id="@+id/text_topics_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -163,9 +152,9 @@
         android:text="@string/topics"
         android:textAppearance="?textAppearanceHeadline6"
         app:drawableStartCompat="@drawable/ic_round_forum"
-        app:layout_constraintEnd_toEndOf="@+id/text_url"
-        app:layout_constraintStart_toStartOf="@+id/text_url"
-        app:layout_constraintTop_toBottomOf="@+id/text_url" />
+        app:layout_constraintEnd_toEndOf="@+id/text_address"
+        app:layout_constraintStart_toStartOf="@+id/text_address"
+        app:layout_constraintTop_toBottomOf="@+id/text_address" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_topics"
@@ -185,10 +174,10 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
+        android:contentDescription="@string/create_topic"
+        android:focusable="true"
         android:src="@drawable/ic_round_create"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/create_topic"
-        android:focusable="true" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

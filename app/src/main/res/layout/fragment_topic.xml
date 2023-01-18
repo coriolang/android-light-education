@@ -13,13 +13,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        tools:text="Topic"
         android:drawablePadding="4dp"
         android:textAppearance="?textAppearanceHeadline6"
+        app:drawableStartCompat="@drawable/ic_round_chat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:drawableStartCompat="@drawable/ic_round_chat" />
+        tools:text="Topic" />
 
     <TextView
         android:id="@+id/text_topic_message"
@@ -27,10 +27,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="?textAppearanceBody1"
-        tools:text="Message"
         app:layout_constraintEnd_toEndOf="@+id/text_topic"
         app:layout_constraintStart_toStartOf="@+id/text_topic"
-        app:layout_constraintTop_toBottomOf="@+id/text_topic" />
+        app:layout_constraintTop_toBottomOf="@+id/text_topic"
+        tools:text="Message" />
 
     <View
         android:id="@+id/divider"
@@ -55,16 +55,16 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_field_message"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/enter_message"
-        app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_round_send"
+        app:endIconMode="custom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:shapeAppearance="?attr/shapeAppearanceLargeComponent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:shapeAppearance="?attr/shapeAppearanceLargeComponent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

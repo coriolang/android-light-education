@@ -12,7 +12,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import java.util.UUID
+import java.util.*
 
 class Database {
 
@@ -212,7 +212,7 @@ class Database {
                         if (money == null) {
                             true
                         } else {
-                            direction.money!! == money
+                            direction.money!! <= money
                         }
                     }
                     ?.filter { direction ->
@@ -226,7 +226,7 @@ class Database {
                         if (score == null) {
                             true
                         } else {
-                            direction.score!! == score.toLong()
+                            direction.score!! <= score.toLong()
                         }
                     }?.toList()
                     ?.sortedBy { direction ->

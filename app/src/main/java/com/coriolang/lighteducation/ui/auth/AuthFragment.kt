@@ -47,7 +47,9 @@ class AuthFragment : Fragment() {
 
     private suspend fun observeSignedInState() {
         authViewModel.signedIn.collect { signedIn ->
-            if (signedIn) { navigateToHome() }
+            if (signedIn) {
+                navigateToHome()
+            }
         }
     }
 
@@ -59,7 +61,9 @@ class AuthFragment : Fragment() {
 
     private suspend fun observeException() {
         authViewModel.exception.collect { message ->
-            if (message.isNotEmpty()) { showToast(message) }
+            if (message.isNotEmpty()) {
+                showToast(message)
+            }
         }
     }
 
@@ -72,7 +76,7 @@ class AuthFragment : Fragment() {
     }
 
     private fun setupPasswordField() {
-        binding.textFieldPassword.editText?.doOnTextChanged { text, start, before, count ->
+        binding.textFieldPassword.editText?.doOnTextChanged { text, _, _, _ ->
             if (text != null && text.length < 8) {
                 binding.textFieldPassword.error =
                     getString(R.string.eight_symbols)
@@ -99,7 +103,9 @@ class AuthFragment : Fragment() {
             val email = binding.textFieldEmail.editText?.text.toString()
             val password = binding.textFieldPassword.editText?.text.toString()
 
-            if (password.length < 8) {
+            if (email.isEmpty()) {
+                showToast(getString(R.string.empty_email))
+            } else if (password.length < 8) {
                 showToast(getString(R.string.eight_symbols))
             } else {
                 authViewModel.signIn(email, password)

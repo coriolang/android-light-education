@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">The Light of Education</string>
+    <string name="app_name">The Light of Education</string>
     <string name="display_name">Display name</string>
     <string name="e_mail" translatable="false">E-mail</string>
     <string name="password">Password</string>
@@ -41,4 +41,7 @@
     <string name="address">Address</string>
     <string name="url" translatable="false">URL</string>
     <string name="create_topic">Create topic</string>
+    <string name="empty_name">Empty name</string>
+    <string name="empty_email">Empty e-mail</string>
+    <string name="empty_text_field">Empty text field</string>
 </resources>

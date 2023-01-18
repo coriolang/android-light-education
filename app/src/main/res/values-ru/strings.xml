@@ -2,7 +2,7 @@
 <resources>
     <string name="display_name">Отображаемое имя</string>
     <string name="password">Пароль</string>
-    <string name="create_account">Зарегестрироваться</string>
+    <string name="create_account">Регистрация</string>
     <string name="eight_symbols">Пароль должен содержать не менее 8 символов</string>
     <string name="sign_in">Войти</string>
     <string name="sign_out">Выйти</string>
@@ -39,4 +39,8 @@
     <string name="score_passing">Проходной балл</string>
     <string name="address">Адрес</string>
     <string name="create_topic">Создать обсуждение</string>
+    <string name="app_name">Поступи правильно</string>
+    <string name="empty_name">Имя пользователя не введено</string>
+    <string name="empty_email">Не введен e-mail</string>
+    <string name="empty_text_field">Поле не заполнено</string>
 </resources>
